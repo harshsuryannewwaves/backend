@@ -11,7 +11,9 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 app.use(morgan('dev'));
-
+app.get("/", (req, res) => {
+  res.status(200).json({ message: "API is healthy." });
+});
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/documents', require('./routes/documents'));
 app.use('/api/backup', (req, res, next) => {
